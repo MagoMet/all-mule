@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <flow name="testing-ground:xml-to-json">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/convertToJson" doc:name="HTTP"/>
+        <set-payload value="&lt;input&gt;
+&lt;orders&gt;
+&lt;order id=&quot;1235234324&quot;&gt;
+
+&lt;orderType&gt;ship&lt;/orderType&gt;
+		&lt;customerInformation&gt;
+			&lt;firstName&gt;Mike&lt;/firstName&gt;
+			&lt;lastName&gt;Mule&lt;/lastName&gt;
+			&lt;phoneNumber&gt;(123)456-7890&lt;/phoneNumber&gt;
+			&lt;address&gt;
+				&lt;line1&gt;123 Nowhere&lt;/line1&gt;
+				&lt;line2&gt;Apt 1&lt;/line2&gt;
+				&lt;city&gt;Portland&lt;/city&gt;
+				&lt;state&gt;OR&lt;/state&gt;
+				&lt;zip&gt;12345&lt;/zip&gt;
+				&lt;plus4&gt;1234&lt;/plus4&gt;
+			&lt;/address&gt;
+		&lt;/customerInformation&gt;
+		&lt;lineItems&gt;
+			&lt;lineItem&gt;
+				&lt;sku&gt;HA23416&lt;/sku&gt;
+				&lt;description&gt;Couch&lt;/description&gt;
+				&lt;quantity&gt;1&lt;/quantity&gt;
+			&lt;/lineItem&gt;
+			&lt;lineItem&gt;
+				&lt;sku&gt;HA23417&lt;/sku&gt;
+				&lt;description&gt;End Table&lt;/description&gt;
+				&lt;quantity&gt;2&lt;/quantity&gt;
+			&lt;/lineItem&gt;
+			&lt;lineItem&gt;
+				&lt;sku&gt;HA23418&lt;/sku&gt;
+				&lt;description&gt;Love Seat&lt;/description&gt;
+				&lt;quantity&gt;1&lt;/quantity&gt;
+			&lt;/lineItem&gt;
+		&lt;/lineItems&gt;
+	&lt;/order&gt;
+	&lt;order id=&quot;1235234325&quot;&gt;
+		&lt;orderType&gt;pickup&lt;/orderType&gt;
+		&lt;customerInformation&gt;
+			&lt;firstName&gt;Mike&lt;/firstName&gt;
+			&lt;lastName&gt;Mule&lt;/lastName&gt;
+			&lt;phoneNumber&gt;(123)456-7890&lt;/phoneNumber&gt;
+		&lt;/customerInformation&gt;
+		&lt;pickupInformation&gt;
+			&lt;storeNumber&gt;123A&lt;/storeNumber&gt;
+			&lt;pickupDate&gt;12/24/2015 03:00:00 PM&lt;/pickupDate&gt;
+		&lt;/pickupInformation&gt;
+		&lt;lineItems&gt;
+			&lt;lineItem&gt;
+				&lt;sku&gt;HA23419&lt;/sku&gt;
+				&lt;description&gt;Table Lamp&lt;/description&gt;
+				&lt;quantity&gt;3&lt;/quantity&gt;
+			&lt;/lineItem&gt;
+			&lt;lineItem&gt;
+				&lt;sku&gt;HA23420&lt;/sku&gt;
+				&lt;description&gt;Area Rug&lt;/description&gt;
+				&lt;quantity&gt;2&lt;/quantity&gt;
+			&lt;/lineItem&gt;
+			&lt;lineItem&gt;
+				&lt;sku&gt;HA23421&lt;/sku&gt;
+				&lt;description&gt;Throw Pillows&lt;/description&gt;
+				&lt;quantity&gt;5&lt;/quantity&gt;
+			&lt;/lineItem&gt;
+		&lt;/lineItems&gt;
+	&lt;/order&gt;
+&lt;/orders&gt;
+&lt;/input&gt;" doc:name="set-xml-payload"/>
+        <dw:transform-message doc:name="convert-to-json" metadata:id="433cd44d-5628-49c6-92bd-c943f675728c">
+            <dw:input-payload doc:sample="input.xml" mimeType="application/xml"/>
+            <dw:set-payload></dw:set-payload>
+        </dw:transform-message>
+        <logger level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="testing-groundFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/test1" doc:name="HTTP"/>
+        <set-payload value="&lt;school&gt;
+    &lt;teachers&gt;
+        &lt;teacher&gt;
+            &lt;name&gt;Mariano&lt;/name&gt;
+            &lt;lastName&gt;De Achaval&lt;/lastName&gt;
+            &lt;subject&gt;DW&lt;/subject&gt;
+        &lt;/teacher&gt;
+        &lt;teacher&gt;
+            &lt;name&gt;Emiliano&lt;/name&gt;
+            &lt;lastName&gt;Lesende&lt;/lastName&gt;
+            &lt;subject&gt;DW&lt;/subject&gt;
+        &lt;/teacher&gt;
+        &lt;teacher&gt;
+            &lt;name&gt;Leandro&lt;/name&gt;
+            &lt;lastName&gt;Shokida&lt;/lastName&gt;
+            &lt;subject&gt;Scala&lt;/subject&gt;
+        &lt;/teacher&gt;
+    &lt;/teachers&gt;
+    &lt;students&gt;
+        &lt;student&gt;
+            &lt;name&gt;Peter&lt;/name&gt;
+            &lt;lastName&gt;Parker&lt;/lastName&gt;
+            &lt;hobby&gt;DW&lt;/hobby&gt;
+            &lt;hobby&gt;Scala&lt;/hobby&gt;
+        &lt;/student&gt;
+        &lt;student&gt;
+            &lt;name&gt;Homer&lt;/name&gt;
+            &lt;lastName&gt;Simpson&lt;/lastName&gt;
+            &lt;hobby&gt;Scala&lt;/hobby&gt;
+        &lt;/student&gt;
+    &lt;/students&gt;
+&lt;/school&gt;" doc:name="Set xml payload"/>
+        <dw:transform-message doc:name="convert-to-json" metadata:id="fdf4cd06-90ca-4788-85c3-e4be6440ba37">
+            <dw:input-payload doc:sample="example.xml" mimeType="application/xml"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/dw
+---
+classrooms: payload.school.teachers groupBy $.subject mapObject ((teacherGroup, subject) -> {
+    class: {
+      name: subject,
+      teachers: { (teacherGroup map {
+        teacher:{
+            name: $.name,
+            lastName: $.lastName
+        }
+      }) },
+      attendees: { (payload.school.students filter ($.*hobby contains subject) map {
+        attendee: {
+          name: $.name,
+          lastName: $.lastName
+        }
+      }) }
+    }
+})]]></dw:set-payload>
+        </dw:transform-message>
+        <logger level="INFO" doc:name="Logger"/>
+    </flow>
+</mule>

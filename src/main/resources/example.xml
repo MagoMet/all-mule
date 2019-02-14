@@ -1,0 +1,32 @@
+<school>
+    <teachers>
+        <teacher>
+            <name>Mariano</name>
+            <lastName>De Achaval</lastName>
+            <subject>DW</subject>
+        </teacher>
+        <teacher>
+            <name>Emiliano</name>
+            <lastName>Lesende</lastName>
+            <subject>DW</subject>
+        </teacher>
+        <teacher>
+            <name>Leandro</name>
+            <lastName>Shokida</lastName>
+            <subject>Scala</subject>
+        </teacher>
+    </teachers>
+    <students>
+        <student>
+            <name>Peter</name>
+            <lastName>Parker</lastName>
+            <hobby>DW</hobby>
+            <hobby>Scala</hobby>
+        </student>
+        <student>
+            <name>Homer</name>
+            <lastName>Simpson</lastName>
+            <hobby>Scala</hobby>
+        </student>
+    </students>
+</school>

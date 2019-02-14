@@ -1,0 +1,67 @@
+<input>
+<orders>
+<order id="1235234324">
+
+<orderType>ship</orderType>
+		<customerInformation>
+			<firstName>Mike</firstName>
+			<lastName>Mule</lastName>
+			<phoneNumber>(123)456-7890</phoneNumber>
+			<address>
+				<line1>123 Nowhere</line1>
+				<line2>Apt 1</line2>
+				<city>Portland</city>
+				<state>OR</state>
+				<zip>12345</zip>
+				<plus4>1234</plus4>
+			</address>
+		</customerInformation>
+		<lineItems>
+			<lineItem>
+				<sku>HA23416</sku>
+				<description>Couch</description>
+				<quantity>1</quantity>
+			</lineItem>
+			<lineItem>
+				<sku>HA23417</sku>
+				<description>End Table</description>
+				<quantity>2</quantity>
+			</lineItem>
+			<lineItem>
+				<sku>HA23418</sku>
+				<description>Love Seat</description>
+				<quantity>1</quantity>
+			</lineItem>
+		</lineItems>
+	</order>
+	<order id="1235234325">
+		<orderType>pickup</orderType>
+		<customerInformation>
+			<firstName>Mike</firstName>
+			<lastName>Mule</lastName>
+			<phoneNumber>(123)456-7890</phoneNumber>
+		</customerInformation>
+		<pickupInformation>
+			<storeNumber>123A</storeNumber>
+			<pickupDate>12/24/2015 03:00:00 PM</pickupDate>
+		</pickupInformation>
+		<lineItems>
+			<lineItem>
+				<sku>HA23419</sku>
+				<description>Table Lamp</description>
+				<quantity>3</quantity>
+			</lineItem>
+			<lineItem>
+				<sku>HA23420</sku>
+				<description>Area Rug</description>
+				<quantity>2</quantity>
+			</lineItem>
+			<lineItem>
+				<sku>HA23421</sku>
+				<description>Throw Pillows</description>
+				<quantity>5</quantity>
+			</lineItem>
+		</lineItems>
+	</order>
+</orders>
+</input>
